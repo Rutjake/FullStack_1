@@ -29,8 +29,10 @@ let persons = [
 
 // Get Root
 app.get('/', (request, response) => {
-    res.send('<h1>Hello!<h1>')
+    response.send('<h1>Hello!<h1>')
 })
+
+
 
 const PORT = 3001
 app.listen(PORT, () => {
