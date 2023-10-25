@@ -32,7 +32,11 @@ app.get('/', (request, response) => {
     response.send('<h1>Hello!<h1>')
 })
 
-// Get All Info From JSon Table
+app.get('/info', (request, response) => {
+    response.json(`Phonebook has info for ${persons.length} people`)
+})
+
+// Get All Info From JSON Table
 app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
