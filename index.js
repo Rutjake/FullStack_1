@@ -44,17 +44,6 @@ app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
 
-// Get Info By Id And Send Error If Not Found
-app.get('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const person = persons.find(person => person.id === id)
-
-    if (person) {
-        response.json(person)
-    }else{
-        response.status(404).end()
-    }
-})
 const PORT = 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
