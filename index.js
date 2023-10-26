@@ -64,6 +64,13 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
+// Add Person To Persons JSON Table
+app.post('/api/persons', (request, response) => {
+    const person = request.body
+    console.log(person)
+    response.json(person)
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
