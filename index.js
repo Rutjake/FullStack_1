@@ -67,7 +67,7 @@ app.delete('/api/persons/:id', (request, response) => {
 // Generate Random Id Between 20 - 1000
 const generateId = () => {
     const randomId = Math.floor(Math.random() * 1000) + 100
-    
+
     return randomId
 }
 // Add Person To Persons JSON Table
@@ -85,6 +85,14 @@ app.post('/api/persons', (request, response) => {
             error: 'number missing'
         })
     }
+    // Check If Name Already Exists
+    for (let i = 0; i < persons.length; i++) {
+        if (persons[i].name === body.name) {
+            return response.status(400).json({
+                error: 'name must be unique'
+            })
+        }
+    }
     const person = {
         id: generateId(),
         name: body.name,
@@ -93,7 +101,7 @@ app.post('/api/persons', (request, response) => {
     }
 
     persons = persons.concat(person)
-    console.log(person)
+    //console.log(person)
     response.json(person)
 })
 
