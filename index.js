@@ -67,8 +67,7 @@ app.delete('/api/persons/:id', (request, response) => {
 // Generate Random Id Between 20 - 1000
 const generateId = () => {
     const randomId = Math.floor(Math.random() * 1000) + 100
-    randomId(...persons.map(n => n.id))
-
+    
     return randomId
 }
 // Add Person To Persons JSON Table
