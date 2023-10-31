@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
+const morgan = require('morgan')
 
 app.use(express.json())
+app.use(morgan('tiny'))
 
 //JSON Data
 let persons = [
@@ -26,6 +28,14 @@ let persons = [
         number: "39-23-6423122"
     }
 ]
+
+//Make New Token For Content
+morgan.token('body', req  => {
+    return JSON.stringify(req.body)
+  })
+
+// Morgan Datalog
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 // Get Root
 app.get('/', (request, response) => {
