@@ -1,11 +1,15 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+const cors = require('cors')
 
 app.use(express.json())
 
 // Morgan Datalog
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
+
+// CORS
+app.use(cors())
 
 //Make New Token For Content
 morgan.token('body', req => {
